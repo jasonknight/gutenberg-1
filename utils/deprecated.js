@@ -10,7 +10,7 @@ import { deprecated } from './deprecation';
 
 const wrapFunction = ( functionName, source = dom ) => ( ...args ) => {
 	deprecated( 'wp.utils.' + functionName, {
-		version: '3.1',
+		version: '3.2',
 		alternative: 'wp.dom.' + functionName,
 		plugin: 'Gutenberg',
 	} );
@@ -40,3 +40,13 @@ export const remove = wrapFunction( 'remove' );
 export const replace = wrapFunction( 'replace' );
 export const replaceTag = wrapFunction( 'replaceTag' );
 export const unwrap = wrapFunction( 'unwrap' );
+
+export function isExtraSmall() {
+	deprecated( 'wp.utils.isExtraSmall', {
+		version: '3.2',
+		alternative: 'wp.viewport.*',
+		plugin: 'Gutenberg',
+	} );
+
+	return window && window.innerWidth < 782;
+}
